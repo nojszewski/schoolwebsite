@@ -33,51 +33,51 @@ function Home() {
   const latestArticles = [
     {
       id: 1,
-      title: "New Research Center Opening",
-      excerpt: "State-of-the-art facility to advance scientific research...",
+      title: "Lorem Ipsum Dolor Sit Amet",
+      excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, nulla....",
       image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80",
       date: "March 20, 2024",
-      category: "Campus News"
+      category: "News"
     },
     {
       id: 2,
-      title: "Student Achievement Awards",
-      excerpt: "Celebrating outstanding academic and extracurricular achievements...",
+      title: "Celebrating Academic Excellence",
+      excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, nulla....",
       image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80",
       date: "March 18, 2024",
-      category: "Student Life"
+      category: "News"
     },
     {
       id: 3,
-      title: "International Partnership",
-      excerpt: "New collaboration with leading universities worldwide...",
+      title: "Global University Collaboration",
+      excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, nulla....",
       image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80",
       date: "March 15, 2024",
-      category: "Partnerships"
+      category: "News"
     },
     {
       id: 4,
-      title: "Innovation in Teaching",
-      excerpt: "Implementing new educational technologies and methodologies...",
+      title: "Innovative Educational Technologies",
+      excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, nulla....",
       image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80",
       date: "March 14, 2024",
-      category: "Education"
+      category: "News"
     },
     {
       id: 5,
-      title: "Sports Championship Victory",
-      excerpt: "Our team's remarkable journey to the national title...",
+      title: "Lorem Ipsum Dolor Sit Amet",
+      excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, nulla....",
       image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80",
       date: "March 12, 2024",
-      category: "Sports"
+      category: "News"
     },
     {
       id: 6,
-      title: "Community Outreach Program",
-      excerpt: "Making a difference in our local community through education...",
+      title: "Lorem Ipsum Dolor Sit Amet",
+      excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, nulla....",
       image: "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&q=80",
       date: "March 10, 2024",
-      category: "Community"
+      category: "News"
     }
   ];
 
