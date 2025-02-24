@@ -188,12 +188,14 @@ function Home() {
       {/* Hero Section with YouTube Video */}
       <section className="relative h-screen hero">
         <div className="absolute inset-0">
-          <iframe
+          {/* <iframe
             className="w-full h-full bg-cover bg-center"
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          ></iframe>
+          ></iframe> */}
+          
+          <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: 'url(https://nowa.zs1mm.edu.pl/wp-content/uploads/2024/08/szkola.jpg)' }} />
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-50" />
         <div className="absolute inset-0 flex items-center justify-center">
