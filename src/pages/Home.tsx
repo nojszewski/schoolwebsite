@@ -23,12 +23,14 @@ import {
   Award,
   Clock
 } from 'lucide-react';
+import { getSlideTransformEl } from 'swiper/effect-utils';
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSubDropdownOpen, setIsSubDropdownOpen] = useState(false);
   const [videoId, setVideoId] = useState('PcQVfwy2AuI');
+  const [scrolled, setScrolled] = useState(false)
 
   const latestArticles = [
     {
@@ -90,34 +92,40 @@ function Home() {
     { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white shadow-sm fixed w-full z-50">
+      <header className={`header shadow-sm fixed w-full z-50 ${scrolled ? "scrolled" : ""}`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
               <GraduationCap className="h-10 w-10 text-blue-600" />
-              <span className="ml-2 text-2xl font-semibold">Academia</span>
+              <span className={`ml-2 text-2xl font-semibold ${scrolled ? 'text-gray-700' : 'text-white'} hover:text-blue-600 hover:cursor-pointer`}>ZS1MM</span>
             </div>
             
             <nav className="hidden md:flex space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-blue-600">Home</Link>
-              <a href="#" className="text-gray-700 hover:text-blue-600">About</a>
+              <Link to="/" className={`${scrolled ? 'text-gray-700' : 'text-white'} hover:text-blue-600`}>Home</Link>
+              <a href="#" className={`${scrolled ? 'text-gray-700' : 'text-white'} hover:text-blue-600`}>Item 1</a>
               
-              {/* Dropdown Menu with improved hover behavior */}
               <div 
                 className="relative group"
                 onMouseEnter={() => setIsDropdownOpen(true)}
                 onMouseLeave={() => {
-                  setTimeout(() => {
-                    setIsDropdownOpen(false);
-                    setIsSubDropdownOpen(false);
-                  }, 700);
+                    setIsDropdownOpen(false)
+                    setIsSubDropdownOpen(false)
                 }}
               >
-                <button className="flex items-center text-gray-700 hover:text-blue-600">
-                  <span>Programs</span>
+                <button className={`flex items-center ${scrolled ? 'text-gray-700' : 'text-white'} hover:text-blue-600`}>
+                  <span>Item 2</span>
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
                 
@@ -148,9 +156,9 @@ function Home() {
                 </div>
               </div>
               
-              <a href="#" className="text-gray-700 hover:text-blue-600">Student Life</a>
-              <Link to="/blog" className="text-gray-700 hover:text-blue-600">Blog</Link>
-              <a href="#" className="text-gray-700 hover:text-blue-600">Contact</a>
+              <a href="#" className={`${scrolled ? 'text-gray-700' : 'text-white'} hover:text-blue-600`}>Item 3</a>
+              <Link to="/blog" className={`${scrolled ? 'text-gray-700' : 'text-white'} hover:text-blue-600`}>Item 4</Link>
+              <a href="#" className={`${scrolled ? 'text-gray-700' : 'text-white'} hover:text-blue-600`}>Item 5</a>
             </nav>
 
             <button 
@@ -168,20 +176,20 @@ function Home() {
         <div className="md:hidden fixed top-20 left-0 right-0 bg-white shadow-lg z-40">
           <nav className="flex flex-col p-4">
             <Link to="/" className="py-2 text-gray-700 hover:text-blue-600">Home</Link>
-            <a href="#" className="py-2 text-gray-700 hover:text-blue-600">About</a>
-            <a href="#" className="py-2 text-gray-700 hover:text-blue-600">Programs</a>
-            <a href="#" className="py-2 text-gray-700 hover:text-blue-600">Student Life</a>
-            <Link to="/blog" className="py-2 text-gray-700 hover:text-blue-600">Blog</Link>
-            <a href="#" className="py-2 text-gray-700 hover:text-blue-600">Contact</a>
+            <a href="#" className="py-2 text-gray-700 hover:text-blue-600">Item 1</a>
+            <a href="#" className="py-2 text-gray-700 hover:text-blue-600">Item 2</a>
+            <a href="#" className="py-2 text-gray-700 hover:text-blue-600">Item 3</a>
+            <Link to="/blog" className="py-2 text-gray-700 hover:text-blue-600">Item 4</Link>
+            <a href="#" className="py-2 text-gray-700 hover:text-blue-600">Item 5</a>
           </nav>
         </div>
       )}
 
       {/* Hero Section with YouTube Video */}
-      <section className="relative h-screen">
+      <section className="relative h-screen hero">
         <div className="absolute inset-0">
           <iframe
-            className="w-full h-full"
+            className="w-full h-full bg-cover bg-center"
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -208,26 +216,18 @@ function Home() {
       <section className="py-20 bg-blue-600">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white text-center">
-            <div>
-              <Trophy className="h-12 w-12 mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">50+</div>
-              <div className="text-lg">Years of Excellence</div>
-            </div>
-            <div>
-              <Users className="h-12 w-12 mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">15,000+</div>
-              <div className="text-lg">Students Enrolled</div>
-            </div>
-            <div>
-              <BookOpen className="h-12 w-12 mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">200+</div>
-              <div className="text-lg">Courses Offered</div>
-            </div>
-            <div>
-              <Award className="h-12 w-12 mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">98%</div>
-              <div className="text-lg">Graduate Employment</div>
-            </div>
+            {[
+              { icon: Trophy, value: "50+", label: "Years of Excellence" },
+              { icon: Users, value: "15,000+", label: "Students Enrolled" },
+              { icon: BookOpen, value: "200+", label: "Courses Offered" },
+              { icon: Award, value: "98%", label: "Graduate Employment" },
+            ].map((stat, index) => (
+              <div key={index}>
+                <stat.icon className="h-12 w-12 mx-auto mb-4" />
+                <div className="text-4xl font-bold mb-2">{stat.value}</div>
+                <div className="text-lg">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -296,7 +296,7 @@ function Home() {
               }
             ].map((program, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative h-48">
+                <div className="relative h-48 hover:cursor-pointer">
                   <img
                     src={program.image}
                     alt={program.title}
@@ -424,7 +424,7 @@ function Home() {
           </div>
           
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-            <p>© 2024 Academia. All rights reserved.</p>
+             <p>© {new Date().getFullYear()} Academia. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -17,3 +17,26 @@
     @apply max-w-7xl mx-auto;
   }
 }
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  transition: background 0.3s ease-in-out;
+  color: white;
+}
+
+.header.scrolled {
+  background: white;
+  padding: 10px;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
